@@ -1,0 +1,135 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.14 (Ubuntu 10.14-1.pgdg18.04+1)
+-- Dumped by pg_dump version 12.4 (Ubuntu 12.4-1.pgdg18.04+1)
+
+-- Started on 2020-09-27 14:40:20 MSK
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+DROP DATABASE vita_soft;
+--
+-- TOC entry 2956 (class 1262 OID 16612)
+-- Name: vita_soft; Type: DATABASE; Schema: -; Owner: dbadmin
+--
+
+CREATE DATABASE vita_soft WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.UTF-8' LC_CTYPE = 'en_US.UTF-8';
+
+
+ALTER DATABASE vita_soft OWNER TO dbadmin;
+
+\connect vita_soft
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2950 (class 0 OID 16659)
+-- Dependencies: 203
+-- Data for Name: request_storage; Type: TABLE DATA; Schema: public; Owner: dbadmin
+--
+
+INSERT INTO public.request_storage (id, request_message, request_header, owner_id, request_state) VALUES (1, 'updatedMessage', 'updatedHeader', 3, 0);
+INSERT INTO public.request_storage (id, request_message, request_header, owner_id, request_state) VALUES (2, 'glxtbdenikrdixswumgcxibkcetypqbhekefmjumvaixgwluewyhwgn', 'qnzzsumsvulczge', 3, 1);
+INSERT INTO public.request_storage (id, request_message, request_header, owner_id, request_state) VALUES (3, 'glxtbdenikrdixswumgcxibkcetypqbhekefmjumvaixgwluewyhwgn', 'qaf', 3, 2);
+INSERT INTO public.request_storage (id, request_message, request_header, owner_id, request_state) VALUES (4, 'glxtbdenikrdixswumgcxibkcetypqbhekefmjumvaixgwluewyhwgn', 'asdasf', 3, 3);
+INSERT INTO public.request_storage (id, request_message, request_header, owner_id, request_state) VALUES (9, 'emiqwpkgrehmvrurukisnnkdixjhlbolfqlampvkvcitttgejslhuyc', 'laudyxuunnwecwu', 3, 0);
+INSERT INTO public.request_storage (id, request_message, request_header, owner_id, request_state) VALUES (10, 'tinmxosbaynjqweojqegqdqsmoyrmvcvwmhcalgmllhykfgxbfjhxap', 'riqtlhcxvpvfuxu', 3, 0);
+
+
+--
+-- TOC entry 2946 (class 0 OID 16633)
+-- Dependencies: 199
+-- Data for Name: users_roles; Type: TABLE DATA; Schema: public; Owner: dbadmin
+--
+
+INSERT INTO public.users_roles (id, role_name) OVERRIDING SYSTEM VALUE VALUES (1, 'ROLE_ADMIN');
+INSERT INTO public.users_roles (id, role_name) OVERRIDING SYSTEM VALUE VALUES (2, 'ROLE_USER');
+INSERT INTO public.users_roles (id, role_name) OVERRIDING SYSTEM VALUE VALUES (3, 'ROLE_OPERATOR');
+
+
+--
+-- TOC entry 2944 (class 0 OID 16616)
+-- Dependencies: 197
+-- Data for Name: usrs; Type: TABLE DATA; Schema: public; Owner: dbadmin
+--
+
+INSERT INTO public.usrs (id, user_name, pass_hash) OVERRIDING SYSTEM VALUE VALUES (1, 'admin', '$2a$10$w5f4D4vl4X3lfx9HRQLbueCpJiIxiFHdHQs1ZiYohroAKXw6.2nxC');
+INSERT INTO public.usrs (id, user_name, pass_hash) OVERRIDING SYSTEM VALUE VALUES (2, 'operator', '$2a$10$5gVVj0iqgwJiT/NtbxSrAeTlZPi4eXHkoK1p8IsjgJHVN/vp1HDv.');
+INSERT INTO public.usrs (id, user_name, pass_hash) OVERRIDING SYSTEM VALUE VALUES (3, 'user', '$2a$10$xAHdb3ADsU/0OwOUf6M/FedyC4.WYSWmCztEUgXW5Rv3ykll91TD2');
+INSERT INTO public.usrs (id, user_name, pass_hash) OVERRIDING SYSTEM VALUE VALUES (4, 'user2', '$2a$10$xAHdb3ADsU/0OwOUf6M/FedyC4.WYSWmCztEUgXW5Rv3ykll91TD2');
+
+
+--
+-- TOC entry 2948 (class 0 OID 16642)
+-- Dependencies: 201
+-- Data for Name: usrs_authority; Type: TABLE DATA; Schema: public; Owner: dbadmin
+--
+
+INSERT INTO public.usrs_authority (id, user_id, role_id) VALUES (1, 1, 1);
+INSERT INTO public.usrs_authority (id, user_id, role_id) VALUES (2, 2, 3);
+INSERT INTO public.usrs_authority (id, user_id, role_id) VALUES (3, 3, 2);
+INSERT INTO public.usrs_authority (id, user_id, role_id) VALUES (6, 4, 2);
+
+
+--
+-- TOC entry 2966 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: request_storage_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dbadmin
+--
+
+SELECT pg_catalog.setval('public.request_storage_id_seq', 10, true);
+
+
+--
+-- TOC entry 2967 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: users_roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dbadmin
+--
+
+SELECT pg_catalog.setval('public.users_roles_id_seq', 3, true);
+
+
+--
+-- TOC entry 2968 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: usrs_authority_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dbadmin
+--
+
+SELECT pg_catalog.setval('public.usrs_authority_id_seq', 7, true);
+
+
+--
+-- TOC entry 2969 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: usrs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dbadmin
+--
+
+SELECT pg_catalog.setval('public.usrs_id_seq', 4, true);
+
+
+-- Completed on 2020-09-27 14:40:20 MSK
+
+--
+-- PostgreSQL database dump complete
+--
+
